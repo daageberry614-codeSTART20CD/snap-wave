@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d1b">
+  <title>Snap Wave</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="auth" class="auth-panel">
+      <div class="brand-mark">≈</div>
+      <p class="eyebrow">YOUR PEOPLE. YOUR MOMENTS.</p>
+      <h1>Snap <span>Wave</span></h1>
+      <p class="muted">Chat, share moments, and stay close.</p>
+      <div class="auth-tabs">
+        <button class="tab active" data-auth="login">Log in</button>
+        <button class="tab" data-auth="register">Create account</button>
+      </div>
+      <form id="auth-form">
+        <label id="name-wrap" class="hidden">Display name<input id="display-name" autocomplete="nickname" placeholder="Your name"></label>
+        <label>Email or username<input id="identity" required autocomplete="username" placeholder="Enter email or username"></label>
+        <label>Password<input id="password" required type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></label>
+        <p id="auth-error" class="error" role="status"></p>
+        <button class="primary full" type="submit" id="auth-submit">Log in</button>
+      </form>
+      <p class="tiny">Demo only: this preview stores a sample session on this device. It does not create a secure online account.</p>
+    </section>
+
+    <section id="main-app" class="hidden">
+      <header class="topbar">
+        <div><div class="eyebrow">GOOD TO SEE YOU</div><h2>Snap <span>Wave</span></h2></div>
+        <button class="avatar" id="profile-shortcut" aria-label="Open profile">SW</button>
+      </header>
+      <section class="stories">
+        <div class="section-head"><h3>Stories</h3><span class="muted">Your circle</span></div>
+        <div class="story-row">
+          <button class="story add-story" id="add-story"><span>＋</span><small>Your story</small></button>
+          <button class="story"><span class="story-avatar lavender">JM</span><small>Jamie</small></button>
+          <button class="story"><span class="story-avatar pink">AK</span><small>Aki</small></button>
+          <button class="story"><span class="story-avatar blue">TN</span><small>Tino</small></button>
+          <button class="story"><span class="story-avatar gold">ZK</span><small>Zara</small></button>
+        </div>
+      </section>
+      <section id="view-chats" class="view">
+        <div class="section-head"><h3>Messages</h3><button class="text-button" id="new-chat">＋ New</button></div>
+        <input id="search" class="search" placeholder="Search chats" aria-label="Search chats">
+        <div id="chat-list" class="chat-list">
+          <button class="chat-item" data-person="Jamie"><span class="person lavender">JM</span><span class="chat-copy"><b>Jamie</b><small>That photo was amazing!</small></span><time>8:42</time></button>
+          <button class="chat-item" data-person="Aki"><span class="person pink">AK</span><span class="chat-copy"><b>Aki</b><small>Voice note · 0:12</small></span><time>8:20</time></button>
+          <button class="chat-item" data-person="Tino"><span class="person blue">TN</span><span class="chat-copy"><b>Tino</b><small>Are we still meeting?</small></span><time>Yesterday</time></button>
+          <button class="chat-item" data-person="Zara"><span class="person gold">ZK</span><span class="chat-copy"><b>Zara</b><small>Sent a snap</small></span><time>Yesterday</time></button>
+        </div>
+      </section>
+      <section id="view-camera" class="view hidden">
+        <div class="section-head"><h3>Capture a moment</h3><span class="muted">Camera</span></div>
+        <div class="camera-box"><div class="camera-symbol">◎</div><p>Take a photo or choose one from your phone.</p><input id="photo-input" type="file" accept="image/*" capture="environment"><img id="photo-preview" class="photo-preview hidden" alt="Selected photo preview"></div>
+      </section>
+      <section id="view-calls" class="view hidden">
+        <div class="section-head"><h3>Calls</h3><span class="muted">Stay connected</span></div>
+        <div class="empty-card"><div class="big-icon">☎</div><b>Your calls will appear here</b><p>Real voice and video calls need a connected calling service and online accounts.</p></div>
+      </section>
+      <section id="view-profile" class="view hidden">
+        <div class="section-head"><h3>Your profile</h3></div>
+        <div class="profile-card"><div class="profile-avatar">SW</div><h3 id="profile-name">Snap Wave user</h3><p class="muted" id="profile-identity"></p><button id="logout" class="secondary full">Log out</button></div>
+      </section>
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-btn active" data-view="chats"><span>▤</span><small>Chats</small></button>
+        <button class="nav-btn" data-view="camera"><span>◎</span><small>Camera</small></button>
+        <button class="nav-btn" data-view="calls"><span>☎</span><small>Calls</small></button>
+        <button class="nav-btn" data-view="profile"><span>◉</span><small>Profile</small></button>
+      </nav>
+    </section>
+  </main>
+  <dialog id="chat-dialog">
+    <form method="dialog" class="dialog-close"><button aria-label="Close">✕</button></form>
+    <h3 id="chat-title">Chat</h3>
+    <div id="chat-messages" class="messages"><p class="bubble received">Hey! Welcome to Snap Wave 👋</p></div>
+    <form id="message-form" class="message-form"><input id="message-input" placeholder="Write a demo message…" required><button class="primary" type="submit">Send</button></form>
+    <p class="tiny">Demo conversation only; messages are not sent online.</p>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
